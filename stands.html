@@ -16,7 +16,7 @@
             --color-text-dark: #333333;    /* Standard text color */
         }
 
-        /* --- BASIC HEADER STYLES (Required for this page) --- */
+        /* --- BASE & HEADER STYLES --- */
         header {
             background-color: var(--color-green);
             padding: 15px 0;
@@ -55,7 +55,7 @@
         }
 
         nav a {
-            color: var(--color-white); /* FIX: Ensures desktop links are visible */
+            color: var(--color-white); 
             text-decoration: none;
             padding: 10px 15px;
             font-weight: 500;
@@ -97,17 +97,14 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            /* Added background image for stands hero */
+            background-image: url('WhatsApp Image 2025-10-20 at 10.49.36.jpeg'); 
+            background-size: cover;
+            background-position: center;
         }
         
-        .hero-background-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
+        /* Remove the separate image element since we use background-image */
+        /* .hero-background-image { display: none; } */
 
         .page-hero::before {
             content: '';
@@ -116,7 +113,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(17, 79, 64, 0.6); 
+            background: rgba(17, 79, 64, 0.75); /* Darker overlay for text visibility */
             z-index: 1;
         }
 
@@ -143,94 +140,97 @@
             color: var(--color-green);
         }
 
-        /* Projects Specific Styles (Unchanged) */
-        .filters {
-            text-align: center;
-            margin-bottom: 40px;
+        /* --- STANDS/DEVELOPMENT STYLES (NEW) --- */
+        .stand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
         }
 
-        .filter-button {
-            background-color: transparent;
-            color: var(--color-green);
-            border: 2px solid var(--color-green);
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 5px;
-            font-weight: bold;
+        .development-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .development-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .filter-button:hover, .filter-button.active {
+        .dev-header {
             background-color: var(--color-green);
             color: var(--color-white);
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .project-info {
             padding: 20px;
-        }
-
-        .project-info h4 {
-            color: var(--color-green);
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.5em;
-        }
-
-        .project-details {
-            font-size: 0.9em;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        .project-details span {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .cta-button {
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
             text-align: center;
-            white-space: nowrap; 
         }
 
-        .primary-cta {
+        .dev-header h4 {
+            margin: 0;
+            font-size: 1.8em;
+            color: var(--color-tan);
+        }
+        
+        .dev-header p {
+            margin: 5px 0 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .dev-content {
+            padding: 30px;
+            background-color: var(--color-white);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 1.05em;
+            color: var(--color-text-dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li i {
+            color: var(--color-tan);
+            margin-right: 15px;
+            font-size: 1.2em;
+            width: 20px;
+        }
+
+        .price-tag {
+            background-color: #e6f7f2; /* Light green/teal background */
+            border: 1px solid var(--color-tan);
+            padding: 15px;
+            text-align: center;
+            font-size: 1.3em;
+            border-radius: 5px;
+            color: var(--color-green);
+        }
+
+        .primary-cta-small {
             background-color: var(--color-tan);
-            color: var(--color-green); 
+            color: var(--color-green);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s;
         }
 
+        .primary-cta-small:hover {
+            background-color: #bfa07a; /* Darker tan */
+        }
+        
         /* --- Footer Styles (Unchanged) --- */
         footer {
             background-color: var(--color-green);
@@ -254,19 +254,11 @@
         /* --- MOBILE MENU CSS (Critical for visibility on small screens) --- */
         @media (max-width: 900px) {
             
-            .menu-toggle {
-                display: block; 
-            }
+            .menu-toggle { display: block; }
             
-            header .container {
-                flex-direction: column; 
-                align-items: flex-start; 
-            }
+            header .container { flex-direction: column; align-items: flex-start; }
 
-            .header-main {
-                width: 100%; 
-                padding-bottom: 5px;
-            }
+            .header-main { width: 100%; padding-bottom: 5px; }
             
             nav {
                 position: absolute;
@@ -275,19 +267,13 @@
                 width: 100%;
                 background-color: var(--color-green);
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                
-                /* Hiding mechanism */
                 max-height: 0; 
                 overflow: hidden;
                 transition: max-height 0.3s ease-in-out;
             }
 
-            /* State when the menu is active (toggled by JavaScript) */
-            #main-header.nav-open nav {
-                max-height: 500px; 
-            }
+            #main-header.nav-open nav { max-height: 500px; }
             
-            /* Style the vertical list */
             nav ul {
                 display: block; 
                 text-align: center; 
@@ -295,14 +281,16 @@
                 border-top: 1px solid rgba(255, 255, 255, 0.2);
             }
             
-            nav ul li {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            nav ul li { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+
+            nav ul li a { padding: 15px 0; display: block; width: 100%; }
+
+            .stand-grid {
+                grid-template-columns: 1fr; /* Stack cards vertically on mobile */
             }
 
-            nav ul li a {
-                padding: 15px 0; 
-                display: block;
-                width: 100%;
+            .dev-header h4 {
+                font-size: 1.5em;
             }
 
             footer .container {
@@ -327,7 +315,8 @@
                     <li><a href="index.html#services">Services</a></li> 
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="about.html">About Us</a></li> 
-                    <li><a href="stands.html">Land Sales</a></li> <li><a href="about.html#contact-us">Contact</a></li>
+                    <li><a href="stands.html">Land Sales</a></li>
+                    <li><a href="about.html#contact-us">Contact</a></li>
                 </ul>
             </nav>
             
@@ -335,7 +324,6 @@
     </header>
 
     <section class="page-hero">
-        
         <div class="container">
             <h2>Available Serviced Stands</h2>
             <p style="font-size: 1.2em;">Own a piece of tomorrow. Fully serviced, legally compliant, and construction-ready land in prime locations.</p>
@@ -355,7 +343,7 @@
                     <div class="dev-content">
                         <ul class="feature-list">
                             <li><i class="fa-solid fa-maximize"></i> Stand Sizes from 200m² - 450m²</li>
-                            <li><i class="fa-solid fa-water"></i> Water: Complete reticulation network installed.</li>
+                            <li><i class="fa-solid fa-water"></i> Water: **Complete reticulation network installed.**</li>
                             <li><i class="fa-solid fa-road"></i> Roads: Compacted gravel (ready for tarring phase).</li>
                             <li><i class="fa-solid fa-file-contract"></i> Title Status: Cession, Deeds processing in progress.</li>
                             <li><i class="fa-solid fa-calendar-check"></i> Construction Ready: Yes</li>
@@ -364,7 +352,7 @@
                             Starting Price: <b>US$9,500</b> (Installment options available)
                         </div>
                         <div style="text-align: center; margin-top: 20px;">
-                            <a href="https://wa.me/263716508832" target="_blank" class="cta-button primary-cta-small">Inquire on WhatsApp</a>
+                            <a href="https://wa.me/263716508832" target="_blank" class="primary-cta-small">Inquire on WhatsApp</a>
                         </div>
                     </div>
                 </div>
@@ -377,21 +365,25 @@
                     <div class="dev-content">
                         <ul class="feature-list">
                             <li><i class="fa-solid fa-maximize"></i> Stand Sizes from 300m² - 600m²</li>
-                            <li><i class="fa-solid fa-water"></i> <b>Water:</b>--------------------.</li>
-                            <li><i class="fa-solid fa-road"></i> <b>Roads:</b> Fully Tarred and complete.</li>
-                            <li><i class="fa-solid fa-file-contract"></i> <b>Title Status:</b> Ready for Deeds Transfer (Full payment required).</li>
-                            <li><i class="fa-solid fa-calendar-check"></i> <b> Ready:</b> Yes</li>
+                            <li><i class="fa-solid fa-water"></i> **Water: Reticulation network and primary connection points complete.**</li>
+                            <li><i class="fa-solid fa-road"></i> Roads: Fully Tarred and complete.</li>
+                            <li><i class="fa-solid fa-file-contract"></i> Title Status: Ready for Deeds Transfer (Full payment required).</li>
+                            <li><i class="fa-solid fa-calendar-check"></i> Construction Ready: Yes</li>
                         </ul>
                         <div class="price-tag">
                             Starting Price: <b>US$15,000</b> (Cash discounts available)
                         </div>
                         <div style="text-align: center; margin-top: 20px;">
-                            <a href="https://wa.me/263716508832" target="_blank" class="cta-button primary-cta-small">Request Viewing</a>
+                            <a href="https://wa.me/263716508832" target="_blank" class="primary-cta-small">Request Viewing</a>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="font-size: 1.1em; color: var(--color-green);">Need help finding the right stand? Contact our sales team for personalized advice.</p>
+                <a href="mailto:ejprojectsdevelopers@gmail.com" class="primary-cta-small" style="background-color: var(--color-green); color: var(--color-white); border: 1px solid var(--color-green);">Email Sales Team</a>
+            </div>
             
 
         </div>
@@ -406,13 +398,14 @@
             </div>
         </div>
     </footer>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Menu Toggle Logic (Copied from index.html)
+            // Mobile Menu Toggle Logic
             const toggleButton = document.querySelector('.menu-toggle');
             const header = document.getElementById('main-header');
 
-            if (toggleButton && header) { // Check if elements exist
+            if (toggleButton && header) {
                 toggleButton.addEventListener('click', function() {
                     header.classList.toggle('nav-open');
                 });
@@ -426,29 +419,7 @@
                     });
                 });
             }
-
-
-            // Simple client-side filtering logic for demonstration (Existing logic)
-            const filterButtons = document.querySelectorAll('.filter-button');
-            const projectCards = document.querySelectorAll('.project-card');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const filter = button.getAttribute('data-filter');
-
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    projectCards.forEach(card => {
-                        const category = card.getAttribute('data-category');
-                        if (filter === 'all' || filter === category) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
+            // Note: The filtering logic from the previous page was removed since it's not needed for this simple stands list.
         });
     </script>
 </body>
